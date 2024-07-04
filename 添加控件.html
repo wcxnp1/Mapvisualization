@@ -32,11 +32,18 @@
 		map.enableScrollWheelZoom(true); //开启鼠标滚轮缩放
 		map.setHeading(64.5); //设置地图旋转角度
 		map.setTilt(73); //设置地图的倾斜角度
-
+		// 表示控件定位于地图的左上角
+	
+		var scaleCtrl = new BMapGL.ScaleControl({
+			anchor:BMAP_ANCHOR_TOP_LEFT,
+			offset: new BMapGL.Size(150, 5)
+		}); // 添加比例尺控件
+		map.addControl(scaleCtrl);
 		// 禁止地图旋转和倾斜可以通过配置项进行设置
-		var map = new BMapGL.Map('allmap', {
-			enableRotate: false,
-			enableTilt: false,
-		});
+		var zoomCtrl = new BMapGL.ZoomControl(); // 添加缩放控件
+		map.addControl(zoomCtrl);
+		var cityCtrl = new BMapGL.CityListControl(); // 添加城市列表控件
+		map.addControl(cityCtrl);
+		
 	</script>
 </html>
